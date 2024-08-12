@@ -1,7 +1,7 @@
 {
-  "name": "smol-11ty-starter",
+  "name": "luther-williamson",
   "version": "1.0.0",
-  "description": "Extremely minimal Eleventy starter to kickstart a simple multi-page site / a nearly opinionless foundation to continue building on",
+  "description": "Luther Williamson, UK-based Game Developer",
   "main": "index.html",
   "scripts": {
     "start": "eleventy --serve",

@@ -1,7 +1,8 @@
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
-
+  
+  // Set Nunjucks as the engine for .njk files
   eleventyConfig.setTemplateFormats([
     "md",
     "njk",
@@ -9,7 +10,6 @@ module.exports = function (eleventyConfig) {
     "liquid"
   ]);
 
-  // Set Nunjucks as the engine for .njk files
   eleventyConfig.setNunjucksEnvironmentOptions({
     throwOnUndefined: true,
     autoescape: false,
@@ -30,6 +30,8 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/css/");
 
   eleventyConfig.addPassthroughCopy({"src/assets/images": "images"});
+
+  eleventyConfig.addPassthroughCopy("src/js");
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
@@ -54,13 +56,23 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/pages/*.md")
   });
 
+  // Update the posts collection
   eleventyConfig.addCollection("posts", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/pages/blog/posts/*.md");
+    return collectionApi.getFilteredByGlob("src/pages/blog/posts/*.md").sort((a, b) => b.date - a.date);
   });
 
+  // Update the projects collection
   eleventyConfig.addCollection("projects", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/pages/projects/games/*.md");
+    return collectionApi.getFilteredByGlob("src/pages/projects/games/*.md").sort((a, b) => b.date - a.date);
   });
+
+  // Add a new sortedPosts collection
+  eleventyConfig.addCollection("sortedPosts", function(collectionApi) {
+    return collectionApi.getAll()
+      .filter(item => item.url && item.url.startsWith('/blog/'))
+      .sort((a, b) => b.date - a.date);
+  });
+  
 
   return {
     dir: {
