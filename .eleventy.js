@@ -1,7 +1,7 @@
 const { DateTime } = require("luxon");
 
 module.exports = function (eleventyConfig) {
-  
+
   // Set Nunjucks as the engine for .njk files
   eleventyConfig.setTemplateFormats([
     "md",
@@ -56,12 +56,12 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByGlob("src/pages/*.md")
   });
 
-  // Update the posts collection
+  // Order the posts collection (reverse chronological)
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/pages/blog/posts/*.md").sort((a, b) => b.date - a.date);
   });
 
-  // Update the projects collection
+  // Order the projects collection (reverse chronological)
   eleventyConfig.addCollection("projects", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/pages/projects/games/*.md").sort((a, b) => b.date - a.date);
   });
