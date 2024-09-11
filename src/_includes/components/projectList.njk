@@ -1,13 +1,38 @@
-<div class="projects">
-  {%- for project in collections.projects | reverse -%}
+<section class="tag-filters">
+  <h3>Filter by tag:</h3>
+  <button class="tag-filter active" data-tag="all">All</button>
+  {% set allTags = [] %}
+  {%- for project in collections.projects -%}
+    {%- for tag in project.data.tags -%}
+      {%- if tag not in allTags and tag != 'pages' -%}
+        {% set allTags = (allTags.push(tag), allTags) %}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endfor -%}
+  {%- for tag in allTags | sort -%}
+    <button class="tag-filter" data-tag="{{ tag }}">{{ tag }}</button>
+  {%- endfor -%}
+</section>
+
+<section class="projects">
+  {%- for project in collections.projects -%}
     <a href="{{ project.url | url }}">
-      <div class="project-card">
+      <div class="project-card" data-tags="{{ project.data.tags | join(',') }}">
         <img src="{{ project.data.thumbnail }}" alt="{{ project.data.title }}">
         <h2 class="project-card-title">{{ project.data.title }}</h2>
+        {%- if project.data.tags -%}
+          <div class="project-card-tags">
+            {%- for tag in project.data.tags -%}
+              {%- if tag != 'pages' -%}
+              <span class="project-card-tag">{{ tag }}</span>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
         {%- if project.data.description -%}
             <p class="project-card-description">{{ project.data.description }}</p>
         {%- endif -%}
       </div>
     </a>
   {%- endfor -%}
-</div>
+</section>

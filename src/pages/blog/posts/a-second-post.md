@@ -1,7 +1,7 @@
 ---
 title: A Second Post
 layout: post.njk
-date: 2019-01-02
+date: 2019-01-05
 tags: tag1, tag2, tag3
 thumbnail: /images/blog2.jpg
 ---
