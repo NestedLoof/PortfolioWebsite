@@ -2,11 +2,11 @@
 title: Hungry Bunny
 description: 2D arcade-style survival game.
 layout: project.njk
-date: 2024-01-01
+date: 2024-04-05
 tags: 
 - PlayBuffer
 - C++
-thumbnail: /images/loop.jpg
+thumbnail: /images/HungryBunnyScreenshot.png
 ---
 
 https://github.com/NestedLoof/HungryBunny
