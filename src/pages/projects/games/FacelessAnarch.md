@@ -3,7 +3,9 @@ title: The Faceless Anarch
 description: Top-down fantasy roguelike.
 layout: project.njk
 date: 2024-05-17
-tags: unreal, c++
+tags:
+- Unreal Engine
+- C++
 thumbnail: /images/FacelessAnarchScreenshot.png
 ---
 

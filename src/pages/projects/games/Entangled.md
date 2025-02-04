@@ -3,7 +3,9 @@ title: Entangled
 description: Comedic, narrative-driven couch co-op game.
 layout: project.njk
 date: 2024-06-28
-tags: unreal, c++
+tags:
+- Unreal Engine
+- C++
 thumbnail: /images/EntangledScreenshot3.png
 ---
 
